@@ -1,29 +1,36 @@
-using CreateShortLink.Dtos;
 using CreateShortLink.Models;
+using CreateShortLink.Models.Entity;
+using CreateShortLink.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CreateShortLink.Controllers;
+
 [ApiController]
 [Route("EnterLink")]
 public class LongToShortController : ControllerBase
 {
-    private ILogger<LongToShortController> _logger;
     private readonly IBuildshortLink _rrr;
+    private readonly ShortLink _link;
 
-    public LongToShortController(ILogger<LongToShortController> logger, IBuildshortLink rrr)
+    public LongToShortController(IBuildshortLink rrr, ShortLink link)
     {
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _rrr = rrr;
+        _link = link;
     }
 
+    
     [HttpGet]
     // GET
-    public JsonResult Get(string longlink)
+    public RedirectToPageResult Get()
     {
-        return new JsonResult(_rrr.BiulderMethod());
-        
+        string shortUrl = _rrr.BiulderMethod();
+        return new (shortUrl);
     }
     
-
-
+    [HttpGet]
+    public RedirectResult Index()
+    {
+        return Redirect("");
+    }
+    
 }

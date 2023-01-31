@@ -1,6 +1,7 @@
+using CreateShortLink.Models.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace CreateShortLink.Dtos
+namespace CreateShortLink.Database
 {
     public class ModelDbContext : DbContext
     {
@@ -9,6 +10,7 @@ namespace CreateShortLink.Dtos
         {
         }
 
-        public DbSet<ShortLink> Products => Set<ShortLink>();
+        public DbSet<ShortLink> Links => Set<ShortLink>();
+        
     }
 }

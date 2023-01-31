@@ -1,5 +1,6 @@
-using CreateShortLink.Dtos;
+using CreateShortLink.Database;
 using CreateShortLink.Models;
+using CreateShortLink.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,7 @@ builder.Services.AddDbContext<ModelDbContext>(opts => {
         builder.Configuration["ConnectionStrings:ShLinkConnection"]);
 });
 builder.Services.AddControllers();
-builder.Services.AddSingleton<IBuildshortLink, BuildShortLink>();
+builder.Services.AddScoped<IBuildshortLink, BuildShortLink>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
