@@ -6,9 +6,13 @@ public class ShortLink
 {
     public Guid ShortLinkId { get; set; }
     
-    [Required(ErrorMessage = "Please enter your long link")]
-    public string? Longlink { get; set; }
 
-    public string? Shortlink { get; set; }
-
+    public string? Shortlink
+    {
+        get
+        {
+            var random = new Random();
+            return $"{random.Next(0000,9999)}";
+        }
+    }
 }
