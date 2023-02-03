@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CreateShortLink.Database.Migrations
 {
     [DbContext(typeof(ModelDbContext))]
-    [Migration("20230203145821_Urlss")]
-    partial class Urlss
+    [Migration("20230203145929_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
