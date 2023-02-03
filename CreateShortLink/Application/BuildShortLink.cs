@@ -1,5 +1,6 @@
-using CreateShortLink.Database;
+
 using CreateShortLink.Models;
+using CreateShortLink.Models.Dtos;
 using CreateShortLink.Models.Entity;
 using CreateShortLink.Repository;
 
@@ -16,13 +17,43 @@ public class BuildShortLink : IBuildshortLink
 
     public Resultss<string> Ttt(string id)
     {
-        Longlink? Resultss = _repoo.GetById(id);
-        if (Resultss == null)
+        try
         {
-            throw new Exception();
-        }
-        else
-            return Resultss<string>.SetResult(Resultss.LongLink);
+            Longlink resultss = _repoo.GetId(id);
+            if (resultss != null && resultss.LongLink != null)
+            {
+                return Resultss<string>.SetResult(resultss.LongLink);
+            }
 
+            return Resultss<string>.SetResult("google.com");
+
+        }
+        catch (Exception)
+        {
+            return Resultss<string>.SetResult("google.com");
+        }
+        
+    }
+
+    public Resultss<string> Goo(Url body)
+    {
+        try
+        {
+            Longlink resultss = _repoo.Getlonglink(body.Full);
+            if (resultss == null)
+            {
+                throw new Exception();
+            }
+
+            return Resultss<string>.SetResult("https://localhost:7222/" + resultss.Id);
+
+        }
+        catch (Exception)
+        {
+            return Resultss<string>.SetResult("https://localhost:7222");
+        }
+        
+        
     }
 }
+

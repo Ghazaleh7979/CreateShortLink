@@ -12,24 +12,18 @@ public class UrlShortenerController : ControllerBase
 {
     // GET
     private readonly IBuildshortLink _build;
-    private readonly IModelRepository repo;
-    private ShortLink _link;
-    private Longlink _longlink;
 
-    public UrlShortenerController(IBuildshortLink build, IModelRepository repository, ShortLink link, Longlink longlink)
+    public UrlShortenerController(IBuildshortLink build)
     {
         _build = build;
-        repo = repository;
-        _link = link;
-        _longlink = longlink;
     }
 
     [HttpGet("{id}")]
-    public void urlll(string id)
+    public void Urlll (string id)
     {
         var rrr = _build.Ttt(id);
         string redirectingurl;
-        redirectingurl = rrr.Result.StartsWith("http://") || rrr.Result.StartsWith("http://") ? rrr.Result: "https://" + rrr.Result;
+        redirectingurl = rrr.Result!.StartsWith("http://") || rrr.Result.StartsWith("http://") ? rrr.Result: "https://" + rrr.Result;
         Response.Redirect(redirectingurl);
     }
     

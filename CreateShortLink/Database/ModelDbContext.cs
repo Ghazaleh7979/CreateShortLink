@@ -9,16 +9,8 @@ namespace CreateShortLink.Database
             : base(options)
         {
         }
-        
 
-        public DbSet<ShortLink> Links
-        {
-            get { return Set<ShortLink>(); }
-        }
 
-        public DbSet<Longlink> Linkssss
-        {
-            get { return Set<Longlink>(); }
-        }
+        public DbSet<Longlink> Urlss { get; set; } = null!;
     }
 }

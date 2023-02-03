@@ -15,7 +15,6 @@ builder.Services.AddDbContext<ModelDbContext>(opts => {
 builder.Services.AddControllers();
 builder.Services.AddScoped<IModelRepository, ModelRepository>();
 builder.Services.AddScoped<IBuildshortLink, BuildShortLink>();
-builder.Services.AddScoped<ShortLink>();
 builder.Services.AddScoped<Longlink>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
